@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birth Weight Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 25px rgba(0,0,0,0.25);
+      width: 380px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #ff5722;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #ff7e5f;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus, select:focus {
+      border-color: #ff5722;
+      background: #fff7f5;
+    }
+
+    button {
+      background: #ff5722;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e64a19;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Birth Weight Prediction</h2>
+    <form action="/predict" method="POST">
+      <label>Gestation</label>
+      <input type="text" name="gestation" placeholder="Enter gestation weeks" required />
+
+      <label>Parity</label>
+      <input type="text" name="parity" placeholder="Enter parity" required />
+
+      <label>Age</label>
+      <input type="text" name="age" placeholder="Enter mother age" required />
+
+      <label>Height</label>
+      <input type="text" name="height" placeholder="Enter height (cm)" required />
+
+      <label>Weight</label>
+      <input type="text" name="weight" placeholder="Enter weight (kg)" required />
+
+      <label>Smoke</label>
+      <select name="smoke" required>
+        <option value="" disabled selected>Select option</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+
+      <button type="submit">Predict Birth Weight</button>
+    </form>
+    <h3>predicted birth Weight :{{ prediction }}</h3>
+  </div>
+</body>
+</html>
